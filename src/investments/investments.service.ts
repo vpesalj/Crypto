@@ -9,16 +9,13 @@ import {
 @Injectable()
 export class InvestmentsService {
   constructor(private prisma: PrismaService) {}
-
-
-  
+ 
 async createInvestment(data: Prisma.InvestmentCreateInput): Promise<Investment> {
     return this.prisma.investment.create({
         data,
     });
 }
-
-  
+ 
 async investment(postWhereUniqueInput: Prisma.InvestmentWhereUniqueInput): Promise<Investment | null> {
   return this.prisma.investment.findUnique({
     where: postWhereUniqueInput,
@@ -43,12 +40,12 @@ async investments(){
   });
 }
 
-
 async updateInvestment(params: {
   where: Prisma.InvestmentWhereUniqueInput;
   data: Prisma.InvestmentUpdateInput;
 }): Promise<Investment> {
   const { data, where } = params;
+  
   return this.prisma.investment.update({
     data,
     where,
@@ -65,11 +62,5 @@ async deleteInvestment(params: {
     where,
   });
 }
-  
-
- 
-
-  
-
   
 }

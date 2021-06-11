@@ -7,7 +7,6 @@ import {
     Prisma,Investment
   } from '@prisma/client';
 
-
 @Injectable()
 export class PortfoliosService {
   constructor(private prisma: PrismaService) {}
@@ -24,17 +23,12 @@ export class PortfoliosService {
     return valueSum;
     
   }
-  /*@Cron('45 * * * * *')
-  handleCron() {
-    console.log("Scheduleerrrrr");
-  }*/
-
+  
   async portfolio(idd){
     return this.prisma.portfolio.findUnique({
       where: {id : idd},
     });
   }
-
 
   async createPortfolio(data: Prisma.PortfolioCreateInput): Promise<Portfolio> {
     return this.prisma.portfolio.create({
@@ -52,13 +46,5 @@ export class PortfoliosService {
       where,
     });
   }
-  
-
-  
-
- 
-
-  
-
   
 }
